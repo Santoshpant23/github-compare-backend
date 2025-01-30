@@ -114,7 +114,9 @@ async function compareUsers(u1: string, u2: string, res: any): Promise<void> {
         -But make it extremely funny and people should feel humiliation by seeing their roast. And, make it a hard roast with facts and some other addons. 
         -Do not give your intro or conclusion. For eg do not say: This output provides a sharp, witty roast while keeping it concise and data-driven, ensuring easy integration into a frontend application.
         
-        And, do not use anything other than plain html with proper tags. Tags should not be html, body, and other top level tags. Keep them div, p, h, tags for simplicity`,
+        And, do not use anything other than plain html with proper tags. Tags should not be html, body, and other top level tags. Keep them div, p, h, tags for simplicity
+        
+        Finally, if one of or both of the users have no repos, or for some reason the repos are empty, just give some funny response for that too.`,
         },
         {
           role: "user",
@@ -172,7 +174,7 @@ async function giveAllPublicRepos(user: string): Promise<string> {
     return data;
   } catch (error) {
     console.error(`Error fetching repos for ${user}:`, error);
-    throw new Error(`Failed to fetch repositories for ${user}`);
+    return "No Repo Found";
   }
 }
 
